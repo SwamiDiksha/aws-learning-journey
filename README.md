@@ -18,7 +18,7 @@ What I am learning ?
 - AWS Regions, Availability Zones
 - Edge Locations
 
-🔄 Networking on AWS - 24% In Progress
+🔄 Networking on AWS - 100% In Progress
 - VPC (Virtual Private Cloud)
 - Subnets and routing
 - Security Groups
@@ -84,4 +84,6 @@ echo '<h1>Hello From EC2!</h1>' | sudo tee /var/www/html/index.html
 ## Resources
 - Platform: [GeeksForGeeks](https://www.geeksforgeeks.org/)
 - Goal: AWS Cloud Practitioner Certification
+
+
  
