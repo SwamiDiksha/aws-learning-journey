@@ -79,6 +79,99 @@ echo '<h1>Hello From EC2!</h1>' | sudo tee /var/www/html/index.html
 - How to install Apache and host a webpage on EC2
 - How to connect to EC2 using PuTTY on Windows
 
+## 🪣 Project 2 — AWS S3 Static Website
+
+### What I Did
+
+**1. Created an S3 Bucket**
+- S3 Console → Create bucket → Unique name → Select region
+- Disabled "Block all public access"
+
+**2. Enabled Static Website Hosting**
+- Bucket → Properties → Static website hosting → Enabled
+- Index document: `index.html`
+- Copied the public endpoint URL provided by AWS
+
+**3. Uploaded HTML File**
+- Uploaded `index.html` via the AWS console
+
+**4. Set Bucket Policy for Public Access**
+- Bucket → Permissions → Bucket Policy → Added:
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::diksha1b/*"
+        }
+    ]
+}
+```
+
+**5. Accessed the Website**
+- Opened the S3 endpoint URL in browser → Page loaded successfully 🎉
+
+### 🛠️ Tools Used
+- Amazon S3
+- S3 Bucket Policy
+- AWS Console
+
+### 💡 Key Learnings
+- What S3 buckets are and how object storage works
+- How to enable static website hosting on S3
+- How bucket policies control public access to objects
+- Difference between S3 as storage vs S3 as a web server
+- How S3 generates a public endpoint URL
+
+
+## 🗄️ Project 3 — AWS RDS MySQL Database
+
+### What I Did
+
+**1. Created an RDS Instance**
+- RDS Console → Create database → Standard Create
+- Engine: MySQL | Template: Free Tier
+- Set DB identifier, master username & password
+
+**2. Configured Connectivity**
+- VPC: Default | Enabled public accessibility
+- Security Group inbound rule: MySQL/Aurora → Port 3306 → 0.0.0.0/0
+
+**3. Waited for Instance to Launch**
+- Status: creating → available
+- Copied the RDS endpoint from the console
+
+**4. Connected via MySQL Workbench**
+- New Connection → RDS endpoint as hostname → Port: 3306
+- Entered master credentials → Connected successfully ✅
+
+**5. Ran Basic SQL Queries**
+```sql
+CREATE DATABASE mydb;
+USE mydb;
+CREATE TABLE users (id INT, name VARCHAR(50));
+INSERT INTO users VALUES (1, 'Sanket');
+SELECT * FROM users;
+```
+
+### 🛠️ Tools Used
+- Amazon RDS
+- MySQL Engine
+- MySQL Workbench
+- Security Groups
+- AWS Console
+
+### 💡 Key Learnings
+- What managed databases are and why RDS simplifies administration
+- How to launch a MySQL RDS instance on Free Tier
+- How to configure Security Groups to allow DB access on port 3306
+- How to connect to RDS remotely using MySQL Workbench
+- Difference between RDS (managed) vs self-hosted DB on EC2
+  
 ---
 
 ## Resources
